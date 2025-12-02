@@ -56,20 +56,41 @@ interface RouteParamsContextType {
 const RouteParamsContext = createContext<RouteParamsContextType>({ params: {} });
 
 export const HashRouter: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [path, setPath] = useState(window.location.hash.slice(1) || '/');
+  // Safe initial read for restricted environments
+  const getInitialPath = () => {
+    try {
+      return window.location.hash.slice(1) || '/';
+    } catch (e) {
+      return '/';
+    }
+  };
+
+  const [path, setPath] = useState(getInitialPath());
 
   useEffect(() => {
     const onHashChange = () => {
-      let p = window.location.hash.slice(1);
-      if (!p) p = '/';
-      setPath(p);
+      try {
+        let p = window.location.hash.slice(1);
+        if (!p) p = '/';
+        setPath(p);
+      } catch (e) {
+        // Ignore errors if location is inaccessible
+      }
     };
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
   const navigate = (to: string) => {
-    window.location.hash = to;
+    try {
+      window.location.hash = to;
+    } catch (e) {
+      // Fallback for restricted environments (like blob: URLs in preview)
+      // where modifying location.hash is blocked.
+      // We manually update the path state to simulate navigation.
+      console.warn('Navigation fallback: updating state directly due to restricted environment.');
+      setPath(to);
+    }
   };
 
   return (

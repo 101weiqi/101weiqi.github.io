@@ -1,4 +1,3 @@
-
 export enum StoneColor {
   BLACK = 'B',
   WHITE = 'W',
@@ -47,6 +46,9 @@ export interface GameSession {
   sgf: string;
   moveCount: number;
   timeControl: string;
+  tournamentName?: string; // New field for tournament records
+  date?: string;
+  result?: string;
 }
 
 export interface Puzzle {
@@ -90,4 +92,19 @@ export interface GoBook {
   cover: string; // URL
   isPublic: boolean;
   content: BookChapter[];
+}
+
+// Homework Types
+export type HomeworkSource = 'bank' | 'book';
+
+export interface HomeworkItem {
+  id: string;
+  title: string;
+  source: HomeworkSource;
+  totalProblems: number;
+  completedProblems: number;
+  status: 'pending' | 'completed';
+  createdAt: string;
+  dueDate?: string;
+  config?: string; // Description of what it contains (e.g. "3 Life&Death, 2 Tesuji")
 }

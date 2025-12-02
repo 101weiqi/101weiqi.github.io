@@ -1,9 +1,8 @@
-
 export type Language = 'en' | 'zh';
 
 export const translations = {
   en: {
-    app: { title: 'Cloud Go', subtitle: 'Play & Train' },
+    app: { title: 'iweiqi', subtitle: 'Play & Train' },
     nav: { 
       home: 'Home', 
       puzzles: 'Puzzles', 
@@ -17,6 +16,7 @@ export const translations = {
       dailyChallenge: 'Daily Challenge',
       dailyDesc: 'Black to play and live in the corner. A classic shape that appears often in actual games.',
       yourGames: 'Your Games',
+      tournamentRecords: 'Major Tournaments',
       play19: 'Play 19x19',
       homework: 'Homework',
       viewAll: 'View All',
@@ -49,17 +49,32 @@ export const translations = {
       placeholder: 'Type a message...'
     },
     puzzle: {
-      title: 'Corner Life & Death',
+      title: 'Puzzle Library',
       desc: 'Black to live',
       turn: 'Turn',
       black: 'Black',
       white: 'White',
       correct: 'Correct!',
       wrong: 'Wrong Move',
-      next: 'Next Puzzle',
-      retry: 'Try Again',
+      next: 'Next',
+      retry: 'Retry',
       hint: 'Hint',
-      hintText: 'Look for the vital point in the "L" shape.'
+      hintText: 'Look for the vital point.',
+      categories: {
+        levels: 'By Rank',
+        topics: 'Special Training',
+        lifeDeath: 'Life & Death',
+        tesuji: 'Tesuji',
+        middle: 'Middle Game',
+        fuseki: 'Fuseki',
+        endgame: 'Endgame',
+        theory: 'Theory'
+      },
+      solver: {
+        total: 'Total',
+        jumpTo: 'Jump to #',
+        go: 'Go'
+      }
     },
     demo: {
       tools: 'Tools',
@@ -73,10 +88,36 @@ export const translations = {
       showNumbers: 'Show Move #',
       import: 'Import SGF'
     },
+    profile: {
+      stats: {
+        wins: 'Wins',
+        losses: 'Losses',
+        rankPoints: 'Rank Points',
+        puzzleRating: 'Puzzle Rating',
+        homework: 'Homework'
+      },
+      homework: {
+        title: 'My Homework',
+        create: 'New Homework',
+        continue: 'Continue',
+        completed: 'Completed',
+        pending: 'Pending',
+        fromBank: 'From Bank',
+        fromBook: 'From Book',
+        createModal: {
+          title: 'Create New Homework',
+          source: 'Source',
+          selectBook: 'Select Book',
+          selectCategories: 'Select Categories (Quantity)',
+          cancel: 'Cancel',
+          create: 'Create'
+        }
+      }
+    },
     common: { vs: 'vs', switchLang: '中文' }
   },
   zh: {
-    app: { title: '云围棋', subtitle: '对弈 & 训练' },
+    app: { title: '爱围棋', subtitle: '对弈 & 训练' },
     nav: { 
       home: '首页', 
       puzzles: '题库', 
@@ -90,6 +131,7 @@ export const translations = {
       dailyChallenge: '每日一题',
       dailyDesc: '黑先角上活棋。这是实战中常见的经典形状，保持连胜！',
       yourGames: '我的对局',
+      tournamentRecords: '大赛棋谱',
       play19: '开始对局',
       homework: '我的作业',
       viewAll: '查看全部',
@@ -122,7 +164,7 @@ export const translations = {
       placeholder: '输入消息...'
     },
     puzzle: {
-      title: '角部死活',
+      title: '题库',
       desc: '黑先活',
       turn: '轮次',
       black: '黑方',
@@ -132,7 +174,22 @@ export const translations = {
       next: '下一题',
       retry: '重试',
       hint: '提示',
-      hintText: '寻找板六形状的要点。'
+      hintText: '寻找形状的要点。',
+      categories: {
+        levels: '按段位',
+        topics: '专项训练',
+        lifeDeath: '死活',
+        tesuji: '手筋',
+        middle: '中盘',
+        fuseki: '布局',
+        endgame: '官子',
+        theory: '棋理'
+      },
+      solver: {
+        total: '共',
+        jumpTo: '跳至题号',
+        go: '前往'
+      }
     },
     demo: {
       tools: '工具栏',
@@ -145,6 +202,32 @@ export const translations = {
       reset: '重置',
       showNumbers: '显示手数',
       import: '导入SGF'
+    },
+    profile: {
+      stats: {
+        wins: '胜',
+        losses: '负',
+        rankPoints: '等级分',
+        puzzleRating: '做题积分',
+        homework: '作业完成'
+      },
+      homework: {
+        title: '我的作业',
+        create: '新建作业',
+        continue: '继续',
+        completed: '已完成',
+        pending: '进行中',
+        fromBank: '来自题库',
+        fromBook: '来自棋书',
+        createModal: {
+          title: '新建作业',
+          source: '题目来源',
+          selectBook: '选择棋书',
+          selectCategories: '选择分类 (数量)',
+          cancel: '取消',
+          create: '创建'
+        }
+      }
     },
     common: { vs: 'vs', switchLang: 'English' }
   }

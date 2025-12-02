@@ -1,5 +1,5 @@
 {
-  "name": "类似101围棋-很好",
+  "name": "爱围棋",
   "description": "A comprehensive Go (Weiqi) platform combining real-time gameplay, correspondence games, and an advanced puzzle training system. Features mobile-first design, SGF analysis, and community tools.",
   "requestFramePermissions": []
 }

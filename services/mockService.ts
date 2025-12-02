@@ -1,5 +1,4 @@
-
-import { GameSession, Puzzle, User, ChatMessage, GoBook } from '../types';
+import { GameSession, Puzzle, User, ChatMessage, GoBook, HomeworkItem } from '../types';
 
 export const CURRENT_USER: User = {
   id: 'u1',
@@ -48,6 +47,48 @@ export const MOCK_GAMES: GameSession[] = [
     sgf: '(;GM[1]FF[4]SZ[19])',
     moveCount: 230,
     timeControl: '1h'
+  }
+];
+
+export const MOCK_TOURNAMENT_GAMES: GameSession[] = [
+  {
+    id: 't1',
+    tournamentName: '28th LG Cup Final',
+    blackPlayer: { id: 'p1', username: 'Shin Jinseo', rank: '9p', avatar: 'https://ui-avatars.com/api/?name=Shin+Jinseo&background=0D8ABC&color=fff&size=128' },
+    whitePlayer: { id: 'p2', username: 'Ke Jie', rank: '9p', avatar: 'https://ui-avatars.com/api/?name=Ke+Jie&background=ef4444&color=fff&size=128' },
+    status: 'finished',
+    type: 'live',
+    sgf: '(;GM[1]...)',
+    moveCount: 252,
+    timeControl: '3h',
+    result: 'B+R',
+    date: '2024-02-15'
+  },
+  {
+    id: 't2',
+    tournamentName: '25th Nongshim Cup',
+    blackPlayer: { id: 'p3', username: 'Iyama Yuta', rank: '9p', avatar: 'https://ui-avatars.com/api/?name=Iyama+Yuta&background=22c55e&color=fff&size=128' },
+    whitePlayer: { id: 'p1', username: 'Shin Jinseo', rank: '9p', avatar: 'https://ui-avatars.com/api/?name=Shin+Jinseo&background=0D8ABC&color=fff&size=128' },
+    status: 'finished',
+    type: 'live',
+    sgf: '(;GM[1]...)',
+    moveCount: 188,
+    timeControl: '1h',
+    result: 'W+R',
+    date: '2024-02-14'
+  },
+  {
+    id: 't3',
+    tournamentName: '10th Ing Cup',
+    blackPlayer: { id: 'p4', username: 'Ichiriki Ryo', rank: '9p', avatar: 'https://ui-avatars.com/api/?name=Ichiriki+Ryo&background=f59e0b&color=fff&size=128' },
+    whitePlayer: { id: 'p5', username: 'Xie Ke', rank: '9p', avatar: 'https://ui-avatars.com/api/?name=Xie+Ke&background=6366f1&color=fff&size=128' },
+    status: 'finished',
+    type: 'live',
+    sgf: '(;GM[1]...)',
+    moveCount: 298,
+    timeControl: '3h',
+    result: 'B+3',
+    date: '2024-01-20'
   }
 ];
 
@@ -111,5 +152,28 @@ export const MOCK_BOOKS: GoBook[] = [
         id: 'c4', title: 'Ladders', children: []
       }
     ]
+  }
+];
+
+export const MOCK_HOMEWORK: HomeworkItem[] = [
+  {
+    id: 'h1',
+    title: 'Daily Training',
+    source: 'bank',
+    totalProblems: 10,
+    completedProblems: 3,
+    status: 'pending',
+    createdAt: '2024-03-20',
+    config: '3 Life&Death, 3 Tesuji, 4 Endgame'
+  },
+  {
+    id: 'h2',
+    title: 'Tesuji Encyclopedia Review',
+    source: 'book',
+    totalProblems: 20,
+    completedProblems: 20,
+    status: 'completed',
+    createdAt: '2024-03-15',
+    config: 'Chapter 1: Nets'
   }
 ];

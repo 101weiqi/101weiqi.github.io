@@ -1,6 +1,7 @@
+
 import React from 'react';
-import { Play, Book, Clock, ChevronRight, Presentation } from 'lucide-react';
-import { MOCK_GAMES } from '../services/mockService';
+import { Play, Book, Clock, ChevronRight, Presentation, Trophy, Medal } from 'lucide-react';
+import { MOCK_GAMES, MOCK_TOURNAMENT_GAMES } from '../services/mockService';
 import { GoBoard } from '../components/GoBoard';
 import { GoEngine } from '../lib/goEngine';
 import { useLanguage, useNavigate } from '../contexts/LanguageContext';
@@ -72,6 +73,56 @@ export const Home: React.FC = () => {
           <span className="font-medium">{t('home.homework')}</span>
         </button>
       </div>
+
+      {/* Major Tournaments */}
+      <section>
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-bold text-stone-700 flex items-center gap-2">
+            <Trophy className="text-yellow-600 w-5 h-5" />
+            {t('home.tournamentRecords')}
+          </h3>
+          <button onClick={() => navigate('/records')} className="text-blue-600 text-sm hover:underline">{t('home.viewAll')}</button>
+        </div>
+        <div className="grid gap-3">
+          {MOCK_TOURNAMENT_GAMES.map(game => (
+            <div 
+              key={game.id} 
+              onClick={() => navigate(`/game/${game.id}`)}
+              className="bg-white p-4 rounded-xl shadow-sm border border-stone-200 hover:border-yellow-400 transition cursor-pointer flex flex-col md:flex-row items-center gap-4 relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-1 h-full bg-yellow-500"></div>
+              
+              <div className="flex-1 w-full md:w-auto">
+                 <div className="flex items-center gap-2 text-yellow-700 font-bold mb-1 text-sm">
+                   <Medal size={16} />
+                   {game.tournamentName}
+                 </div>
+                 <div className="text-xs text-stone-400 flex items-center gap-2">
+                   <span>{game.date}</span>
+                   <span>•</span>
+                   <span>{game.moveCount} moves</span>
+                 </div>
+              </div>
+
+              <div className="flex-1 w-full flex justify-between items-center md:justify-center gap-4">
+                 <div className="flex items-center gap-2">
+                    <span className="font-bold text-stone-900">{game.blackPlayer?.username}</span>
+                    <span className="text-xs bg-black text-white px-1 rounded">B</span>
+                 </div>
+                 <span className="text-stone-400 font-serif italic text-sm">vs</span>
+                 <div className="flex items-center gap-2">
+                    <span className="text-xs bg-stone-200 text-stone-800 px-1 rounded border border-stone-300">W</span>
+                    <span className="font-bold text-stone-900">{game.whitePlayer?.username}</span>
+                 </div>
+              </div>
+
+              <div className="text-right min-w-[60px]">
+                 <span className="font-bold text-red-500">{game.result}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Active Games */}
       <section>
