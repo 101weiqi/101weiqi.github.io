@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { GoBoard } from '../components/GoBoard';
 import { GoEngine } from '../lib/goEngine';
 import { CURRENT_USER } from '../services/mockService';
 import { MessageSquare, SkipForward, Flag, RotateCcw } from 'lucide-react';
 import { StoneColor } from '../types';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage, useParams } from '../contexts/LanguageContext';
 
 export const GameRoom: React.FC = () => {
   const { id } = useParams();

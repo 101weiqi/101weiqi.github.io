@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { User, BookOpen, MessageSquare, PlayCircle, Menu, X, Languages, FileText, Presentation, Library, Home } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage, useLocation, useNavigate } from '../contexts/LanguageContext';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);

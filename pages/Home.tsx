@@ -1,11 +1,9 @@
-
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Play, Book, Clock, ChevronRight, Presentation } from 'lucide-react';
 import { MOCK_GAMES } from '../services/mockService';
 import { GoBoard } from '../components/GoBoard';
 import { GoEngine } from '../lib/goEngine';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage, useNavigate } from '../contexts/LanguageContext';
 
 export const Home: React.FC = () => {
   const { t } = useLanguage();
