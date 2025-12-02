@@ -1,16 +1,25 @@
 name: Deploy to GitHub Pages
 
 on:
+  # 每次推送到 main 分支时触发
   push:
-    branches: [ main, master ]
+    branches: [ main ]
+  # 允许在 Actions 页面手动触发
+  workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# 设置权限，允许部署到 Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# 允许并发部署，但在新部署开始时取消正在进行的旧部署
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
+  # 构建任务
   build:
     runs-on: ubuntu-latest
     steps:
@@ -20,10 +29,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci || npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
@@ -33,6 +43,7 @@ jobs:
         with:
           path: ./dist
 
+  # 部署任务
   deploy:
     environment:
       name: github-pages
