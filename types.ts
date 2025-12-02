@@ -74,3 +74,20 @@ export interface BoardMarker {
   type: MarkerType;
   label?: string; // For letters or specific numbers
 }
+
+// Book Types
+export interface BookChapter {
+  id: string;
+  title: string;
+  children?: BookChapter[]; // Sub-chapters or problems
+  sgf?: string; // If it's a leaf node (problem/diagram)
+}
+
+export interface GoBook {
+  id: string;
+  title: string;
+  author: string;
+  cover: string; // URL
+  isPublic: boolean;
+  content: BookChapter[];
+}

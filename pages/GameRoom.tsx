@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { GoBoard } from '../components/GoBoard';
 import { GoEngine } from '../lib/goEngine';
@@ -50,7 +51,6 @@ export const GameRoom: React.FC = () => {
     }
   };
 
-  const turnColor = engine.getCurrentTurn();
   const isMyTurn = true; // Mock check
 
   return (
